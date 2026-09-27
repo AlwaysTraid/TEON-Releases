@@ -1,124 +1,94 @@
 # TEON
 
-**Traid's EON Nexus** is a Windows launcher for Pokémon Emerald runs. Make a profile, choose the generations you want, save a randomization, and play with or without NameLocke. Profiles keep their games, settings, and saves separate.
+**Traid's EON Nexus** is a Windows launcher for randomized Pokémon Emerald runs and NameLocke. Keep each run's generations, mods, game, and saves in its own profile.
 
-**Current status:** Windows x64 preview. [Get the latest build from Releases](../../releases). Download the file named `TEON-<version>-win-x64.zip`, then extract the whole ZIP. GitHub's automatic **Source code** downloads contain only this release repository's documentation, not the launcher.
+[Download a release](../../releases) · [Set up a run](#get-started) · [Games and mods](#games-and-mods) · [FAQ](#faq)
 
-## Before you start
+> **Windows x64 preview.** Download `TEON-<version>-win-x64.zip` from **Releases > Assets**. GitHub's automatic Source code ZIP is just this documentation repository.
 
-| You need | Why |
-| --- | --- |
-| Windows x64 | The current launcher build targets Windows. |
-| Your own clean Pokémon Emerald (U), revision 0 ROM | TEON verifies the original 16 MiB game before preparing an expanded run. A randomized or modified ROM will not work as the base game. |
-| [mGBA for Windows](https://mgba.io/downloads.html) | TEON opens your game in mGBA. Select its executable in TEON's Settings. |
-| Java 11 or newer | The expanded randomizer runs on Java. Install a Java runtime such as [Eclipse Temurin](https://adoptium.net/temurin/releases) and make sure `java -version` works in PowerShell. |
-| Internet access on first use | TEON downloads and verifies its pinned randomizer components. NameLocke downloads its speech model when you first start a voice session. |
-| A microphone, if using NameLocke | Voice matching listens to the party in your current game. |
+## Get started
 
-The release includes .NET and the small Python runtime it needs. You do not need Visual Studio, WSL, or a build toolchain to play.
+1. Extract the release ZIP and run `TEON.exe`.
+2. In **Settings**, select [mGBA](https://mgba.io/downloads.html). In **Game Setup**, select your own clean **Pokémon Emerald (U), revision 0** ROM.
+3. Create a profile, choose your generations, and install **Expanded Randomizer**. Add **NameLocke** if you want voice-based fainting.
+4. Open **Randomizer**, choose your options, then click **Randomize (Save)** in its window.
+5. Return to the profile and select its play button. For NameLocke, follow the short [voice setup](#games-and-mods) below.
 
-## Set up a run
+**Also required:** [Java 11 or newer](https://adoptium.net/temurin/releases) for the randomizer (`java -version` should work), internet access for first-time downloads, and a microphone for NameLocke. The release already includes .NET and its Python runtime. You do not need WSL or build tools.
 
-1. Extract the release ZIP to a folder you can keep, then run `TEON.exe`.
-2. Open **Settings** and choose your mGBA executable. Open **Game Setup** and select your clean Emerald ROM. These are separate files: the emulator runs games; the ROM supplies the base game.
-3. Open **Pokémon Emerald**, create a profile, and choose which Pokémon generations to include.
-4. In the profile's **Mods** tab, install **Expanded Randomizer**. Install **NameLocke** too if you want the voice challenge.
-5. Open the **Randomizer** tab and choose **Configure Randomizer**. Choose the options you want in the randomizer window, select **Randomize (Save)**, and close that window. New profiles start without randomization options enabled.
-6. Return to the profile and use its play button. TEON checks the saved randomization and prepares the game. A NameLocke profile opens its own control window before launching mGBA.
-
-Your clean ROM is kept as the input. TEON writes playable games and saves under your Windows user data directory, not into this release repository.
-
-## Supported games and mods
+## Games and mods
 
 <details>
-<summary><strong>Pokémon Emerald</strong> - expanded engine, Gen I-IX pool</summary>
+<summary><strong>Pokémon Emerald</strong> · Expanded engine · Gen I-IX</summary>
 
-TEON accepts a clean Emerald (U), revision 0 ROM and prepares an expanded game for the generations selected in your profile. This is the only supported game at present. A generation selection restricts the Pokémon pool; it does not change which base ROM you provide.
+Use a clean 16 MiB Emerald (U), revision 0 ROM. TEON creates the expanded game from a copy and uses the generations selected for your profile.
 
-### Available mods
+**Available mods**
 
 <details>
-<summary><strong>Expanded Randomizer</strong> - configure a new run</summary>
+<summary><strong>Expanded Randomizer</strong> · Build a different run</summary>
 
-Choose what to randomize in the full randomizer window. TEON applies your profile's generation selection automatically and verifies the saved result before using it. You must select **Randomize (Save)** in that window to create a game. The randomizer interface is based on KittyPBoxx's UPR-Speedchoice work and the Universal Pokémon Randomizer lineage; credit belongs to their contributors.
-
-After you save a run, **Re-Randomize** can create another with the last saved settings. It asks before replacing the previous run and deleting its game and saves. Copy anything you want to keep before confirming.
+- Choose your settings in the randomizer window; click **Randomize (Save)** to create the game.
+- **Re-Randomize** reuses the saved settings. It asks before deleting the previous run and saves.
+- Randomizer interface by KittyPBoxx, based on UPR-Speedchoice and Universal Pokémon Randomizer work.
 
 </details>
 
 <details>
-<summary><strong>NameLocke</strong> - voice challenge</summary>
+<summary><strong>NameLocke</strong> · Voice challenge</summary>
 
-**Developed by Traid. Original idea by ReadyJP.** NameLocke listens for the species or nickname of a Pokémon in your current party and sends a faint request for that individual Pokémon. A Pokémon in the PC is outside the voice matching party. During battle, a requested faint may wait for a safe point in the game.
+**Developed by Traid. Original idea by ReadyJP.**
 
-To play, install Expanded Randomizer and NameLocke in the same profile, create a randomization, then open the profile's game. In the NameLocke window:
-
-1. Choose **Open game** to launch mGBA.
-2. In mGBA 0.10.x, select **Tools > Scripting... > File > Load Script...**. Use **Lua script** in the NameLocke window for the correct folder and filename. Load the script again whenever mGBA starts.
-3. Choose your microphone and select **Start session**. The session can wait for the script if you start it first.
-4. Turn on **Enable live kill** if you want matched names to faint Pokémon. With it off, matching runs in dry-run mode.
-
-The **Lua script** button points to the correct script for the profile you launched. Leave the script beside `game.gba` in place: TEON checks it against that specific game when building and playing.
+- Say the species or nickname of a Pokémon in your current party to request its faint.
+- From your profile, open NameLocke and click **Open game**.
+- In mGBA 0.10.x, go to **Tools > Scripting... > File > Load Script...**. The **Lua script** button in NameLocke shows the correct folder and filename. Load it once per mGBA launch.
+- Select your microphone and click **Start session**. Turn on **Enable live kill** to make matches affect the game; otherwise matching runs as a dry run.
 
 </details>
 
 </details>
 
-## Frequently asked questions
+## FAQ
 
 <details>
-<summary>Which file do I download from GitHub?</summary>
+<summary>Which download do I need?</summary>
 
-Open **Releases** and download `TEON-<version>-win-x64.zip` under Assets. Extract it, then launch `TEON.exe`. The automatic **Source code (zip)** and **Source code (tar.gz)** links are GitHub snapshots of this documentation repository and cannot run the launcher.
+Choose `TEON-<version>-win-x64.zip` under **Releases > Assets**. Extract the whole ZIP before running `TEON.exe`. The automatic Source code ZIP cannot launch TEON.
 
 </details>
 
 <details>
-<summary>Why do I need Java if TEON comes as an EXE?</summary>
+<summary>Why does the randomizer ask for Java?</summary>
 
-The launcher includes its .NET runtime, but its expanded randomizer is a separate Java program. Install Java 11 or newer, open PowerShell, and run `java -version`. TEON downloads the pinned randomizer files when they are needed; the first download requires internet access.
-
-</details>
-
-<details>
-<summary>Where do I choose mGBA and where do I choose the Emerald ROM?</summary>
-
-Choose the mGBA `.exe` in TEON **Settings**. Choose your clean Emerald `.gba` in **Game Setup**. mGBA is the emulator; Emerald is the input game. The release contains neither of them.
+TEON includes its .NET runtime, but the expanded randomizer runs on Java. Install Java 11 or newer and check `java -version` in PowerShell.
 
 </details>
 
 <details>
-<summary>Why does NameLocke show two Lua files?</summary>
+<summary>Where are my saves?</summary>
 
-The build keeps `game.namelock.lua` beside its matching `game.gba` so TEON can verify that pair. When you launch, TEON copies that script to a stable `namelock.lua` path for the profile. Use the path shown by the **Lua script** button in the NameLocke window. It is refreshed when you launch that profile's game.
-
-</details>
-
-<details>
-<summary>Where are my saves? Does Re-Randomize keep them?</summary>
-
-Use the profile's **Saves** tab to see its save files and open their folders. A NameLocke game's battery save is `game.sav` beside `game.gba` in TEON's local user data. Re-Randomize asks before it deletes the previous run's game and saves. Back up a save outside that run before you confirm if you want to keep it.
+Open the profile's **Saves** tab. Use its folder action to find a save. **Re-Randomize** asks before replacing the previous run, including its saves.
 
 </details>
 
 <details>
-<summary>Why did NameLocke hear a name but nothing fainted?</summary>
+<summary>NameLocke heard a name. Why did nothing faint?</summary>
 
-Check that **Enable live kill** is on, mGBA has the matching Lua script loaded, and the session says it is listening. A battle faint may wait for a safe point. If the game is stuck or a queued faint never finishes, report the steps, the last NameLocke log lines, and the version from `release-manifest.json`. Do not upload your ROM or save file to a public issue.
+Check **Enable live kill**, the selected microphone, and whether you loaded the matching Lua script in mGBA. During battle, a faint can wait for a safe game state. If it stays stuck, include the last NameLocke log lines in a bug report.
 
 </details>
 
 <details>
-<summary>Can I add a different game or another mod?</summary>
+<summary>Can I use another game or mod?</summary>
 
-The current release supports Pokémon Emerald with Expanded Randomizer and NameLocke. Other games and mods are not supported by this build.
+This preview supports Pokémon Emerald with Expanded Randomizer and NameLocke.
 
 </details>
 
-## Support and credits
+## Credits and support
 
-When reporting a problem, include the TEON version, Windows version, mGBA version, what you clicked, and the exact error text. Keep ROMs, saves, personal file paths, and private keys out of public issues. For a suspected security issue, see [SECURITY.md](SECURITY.md).
+TEON and NameLocke were developed by **Traid**. **ReadyJP** came up with the original NameLocke idea. The expanded engine, randomizer, emulator, and other third-party projects retain their own credits and terms in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-TEON and NameLocke development: **Traid**. NameLocke's original idea: **ReadyJP**. Expanded randomizer and game engine work is credited to its upstream creators in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Those projects retain their own licenses.
+For a bug report, include your TEON version, Windows version, mGBA version, steps to reproduce, and the exact error. Do not upload ROMs, saves, personal paths, or private keys to a public issue. See [SECURITY.md](SECURITY.md) for sensitive reports.
 
-Official compiled TEON releases may be used under the terms in [LICENSE](LICENSE). TEON is not affiliated with Nintendo, The Pokémon Company, or Game Freak. No Pokémon ROM is included.
+TEON does not include a Pokémon ROM and is not affiliated with Nintendo, The Pokémon Company, or Game Freak. Official builds are distributed under [LICENSE](LICENSE).
