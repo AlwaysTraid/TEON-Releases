@@ -1,0 +1,8 @@
+# Only release documentation belongs in this repository.
+# Attach the Windows ZIP to a GitHub Release instead of committing it.
+*
+!.gitignore
+!README.md
+!LICENSE
+!THIRD_PARTY_NOTICES.md
+!SECURITY.md
