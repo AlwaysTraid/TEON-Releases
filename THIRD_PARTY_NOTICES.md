@@ -34,7 +34,29 @@ the MIT License.
 Project: https://github.com/naudio/NAudio
 License: https://github.com/naudio/NAudio/blob/master/LICENSE
 
+### Pokémon Showdown party icon sheet
 
+The NameLocke OBS overlay includes `pokemonicons-sheet.png`, sourced from
+Pokémon Showdown / Smogon's sprite resources:
+https://play.pokemonshowdown.com/sprites/pokemonicons-sheet.png
+
+Sprite project and rights information: https://github.com/smogon/sprites
+
+The Smogon sprite repository's MIT license applies to repository code, not to
+its Pokémon artwork. Its maintainers state that Pokémon sprite rights belong
+to Nintendo, Game Freak, and The Pokémon Company, and that use of some
+community-created sprites should be discussed with the maintainers first.
+Attribution here does not grant permission to redistribute artwork. TEON is
+not affiliated with Pokémon Showdown or Smogon.
+
+### Pokémon-style overlay font
+
+The NameLocke OBS overlay includes a Game Boy-style font attributed by the
+project's asset inventory to PascalPixel's `pokemon-font`.
+
+Project: https://github.com/PascalPixel/pokemon-font
+The font remains subject to its creator's terms; the TEON license does not
+cover the font artwork.
 
 ### CMU Pronouncing Dictionary (CMUdict)
 
