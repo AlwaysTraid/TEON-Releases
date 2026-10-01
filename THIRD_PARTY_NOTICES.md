@@ -10,6 +10,24 @@ toolchain in its public release package.
 
 ## Components present in the Windows release
 
+### Epic Online Services SDK 1.19.2.1
+
+Internet partner connections use Epic Online Services (EOS), operated by Epic
+Games, Inc. Copyright Epic Games, Inc. All Rights Reserved. EOS is governed by
+Epic's applicable SDK and service terms, not TEON's license. The package includes
+`EOS_THIRD_PARTY_NOTICES.txt` for the SDK's bundled third-party components.
+
+EOS is provided as is. To the extent permitted by applicable law, Epic makes no
+representations or warranties regarding the Epic materials and disclaims all
+conditions and liability relating to those materials. TEON is not endorsed by Epic.
+
+Official SDK and terms: https://onlineservices.epicgames.com/
+
+The Windows game-client credential is packaged as required by the SDK. It is an
+untrusted client configuration, restricted to authenticated-user lobby operations;
+it is not a developer-portal, admin, or trusted-server credential. Never substitute
+a more privileged client in a distributed build.
+
 ### Microsoft .NET 8
 
 TEON is published as a self-contained .NET 8 Windows application. Microsoft .NET is
