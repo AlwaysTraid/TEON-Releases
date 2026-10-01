@@ -7,7 +7,7 @@ Randomize Pokémon Emerald, choose the generations you want, and keep each run i
 **Windows x64 preview** &nbsp; · &nbsp; [Download](../../releases) &nbsp; · &nbsp; [Set up](#get-playing) &nbsp; · &nbsp; [Games and mods](#games-and-mods) &nbsp; · &nbsp; [Soul Link](#soul-link)
 
 > [!IMPORTANT]
-> Download **`TEON-<version>-win-x64.zip`** under **Releases > Assets**. A private friend-test package may instead be named **`TEON-Streamer-win-x64.zip`**. Extract it before opening `TEON.exe`. GitHub's automatic **Source code** download contains documentation only.
+> Download **`TEON-<version>-win-x64.zip`** under **Releases > Assets**. Package may instead be named **`TEON-Streamer-win-x64.zip`**. Extract it before opening `TEON.exe`.
 
 ---
 
@@ -76,7 +76,7 @@ Type these in **mGBA > Tools > Scripting...**, not in the OBS browser console. R
 | `namelock.killpids({0x12345678, 0x87654321})` | Request a batch of faints for the listed PIDs. |
 | `namelock.killbattle(1)` | During battle, target slot 1 from the stable pre-battle party order. |
 
-These manual faint commands set HP to zero; they do not release Pokémon. During Soul Link, a verified faint also affects the linked partner. **Solo NameLocke has no new reset/heal command in this build.** The shared encounter reset is documented below.
+These manual faint commands set HP to zero; they do not release Pokémon. During Soul Link, a verified faint also affects the linked partner.
 
 **Developed by Traid. Original idea by ReadyJP.**
 
@@ -90,7 +90,7 @@ These manual faint commands set HP to zero; they do not release Pokémon. During
 
 <br>
 
-Soul Link uses **Connect With Partner** in the TEON launcher. Room hosting and joining use the bundled **Epic Online Services (EOS)** connection. Players do not need an Epic account sign-in, SDK installation, server address, separate relay application, or port forwarding. Internet access is required.
+Soul Link uses **Connect With Partner** in the TEON launcher. Internet access is required.
 
 ### Connect and start playing
 
@@ -99,7 +99,7 @@ Soul Link uses **Connect With Partner** in the TEON launcher. Room hosting and j
 3. The other player enters the code and selects **Request to join**. The host checks the displayed name and accepts the request.
 4. Confirm **Connected** in both launchers. Use **Check connection** and confirm acknowledgement before starting the games.
 5. Each player opens their own NameLocke profile through **Build + Play / Play**, then loads that game's Lua script in mGBA. After updating TEON, launch through the profile again and reload the updated script.
-6. Check **Bridge · connected**, the partner's name, and the **Soul Link** tab in each NameLocke window. The TEON connection enables Soul Link automatically; there is no separate Start Soul Link button.
+6. Check **Bridge · connected**, the partner's name, and the **Soul Link** tab in each NameLocke window. The TEON connection enables Soul Link automatically.
 7. Start microphone sessions when ready. Begin with **Live Kill off** to check matching, then enable it to apply voice kills. Encounter detection does not require the microphone to be running.
 
 Keep the host's TEON application open. Quitting the host ends the room; create and share a new code next time. A new room does not erase the saved run history. Closing a launcher to its system tray can leave it running; use **Quit** to exit fully.
@@ -127,8 +127,6 @@ Type these in **either player's mGBA scripting console**. Only one player needs 
 Wait for **Encounter reset · both games ready** before continuing. Caught party members regain full HP and lose status conditions; PP is unchanged. Their identities and pairing stay intact. A boxed member's elimination is cleared, and Emerald restores its HP normally on withdrawal. A failed side gets another eligible encounter attempt, while its caught counterpart remains paired. Other locations are unaffected, and normal voice/natural-faint rules apply again afterward. Save both games when the reset completes.
 
 A reset is **not a save-history rewind**. Loading an older save can pause detection with a rollback message because recorded encounters are newer than that save. Resume the matching saves instead of repeatedly requesting an elimination reset. The console reports a refusal if a paused or mismatched run prevents the request.
-
-**OBS-only marker control:** In the overlay's browser developer console, `namelocke.seteliminated("Route 101", false)` only hides that page's red marker; passing `true` restores the actual marker display. It does not heal Pokémon or alter shared history. Use the **mGBA console** for the gameplay reset above.
 
 </details>
 
